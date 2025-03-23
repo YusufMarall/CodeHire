@@ -1,0 +1,24 @@
+<TestScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+
+        Label:
+            text: "Test Ekranı"
+            font_size: 24
+
+        TextInput:
+            id: test_input
+            hint_text: "Cevaplarınızı buraya yazın"
+            multiline: True
+
+        Button:
+            text: "Testi Gönder"
+            font_size: 18
+            on_release: root.ids.result_label.text = "Test başarıyla gönderildi!"
+
+        Label:
+            id: result_label
+            text: ""
+            color: (0, 1, 0, 1)  # Yeşil renk
