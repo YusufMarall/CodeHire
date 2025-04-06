@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Ekranı</title>
+</head>
+<body>
+  <h2>Testi Tamamla</h2>
+  <textarea id="testResult" placeholder="Test sonucu yaz..."></textarea><br>
+  <button onclick="submitTest()">Gönder</button>
+  <p id="testStatus"></p>
+
+  <script>
+    const username = localStorage.getItem("username");
+
+    function submitTest() {
+      const result = document.getElementById("testResult").value;
+
+      fetch("http://127.0.0.1:5000/api/submit_test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: username, result: result })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("testStatus").textContent = data.message;
+      });
+    }
+  </script>
+</body>
+</html>
