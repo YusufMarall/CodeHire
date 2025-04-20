@@ -1,0 +1,40 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 10
+        padding: 20
+
+        TextInput:
+            id: username_input
+            hint_text: "Kullanıcı Adı"
+
+        TextInput:
+            id: password_input
+            hint_text: "Şifre"
+            password: True
+
+        Button:
+            text: "Giriş Yap"
+            on_release: root.login()
+
+        Label:
+            id: login_status
+            text: ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
