@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Sayfası</title></head>
+<body>
+  <h2>Testi Tamamla</h2>
+  <textarea id="test_result" placeholder="Test cevabınızı girin..."></textarea><br>
+  <button onclick="submitTest()">Gönder</button>
+  <p id="status"></p>
+  <button onclick="window.location.href='profile.html'">Profil</button>
+
+  <script>
+    const username = localStorage.getItem("username");
+
+    function submitTest() {
+      const result = document.getElementById("test_result").value;
+
+      fetch("http://127.0.0.1:5000/api/submit_test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, result })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("status").innerText = `Test gönderildi! Puan: ${data.score}`;
+      });
+    }
+  </script>
+</body>
+</html>
